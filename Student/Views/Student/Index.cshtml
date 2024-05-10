@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StudentBuisness.Models.Student>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #f2f2f2;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    td {
+        padding: 8px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+        a:hover {
+            color: #0056b3;
+        }
+</style>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Mark</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>@student.DOB</td>
+                    <td>@student.Mark</td>
+                    <td><a href="@Url.Action("Edit", "Student", new { id = student.ID })">Edit</a></td>
+                    <td><a href="@Url.Action("Delete", "Student", new { id = student.ID })">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
